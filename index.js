@@ -6,7 +6,7 @@ var dateTime = require('node-datetime');
 var bodyParser = require('body-parser');
 
 app.set('view engine', 'pug');
-app.set('views','./views');
+app.set('views', './views');
 
 var port = 8080;
 
@@ -22,7 +22,7 @@ app.use(function (req, res, next) {
 app.get('/', function (req, res) {
     res.json({
         'success': true,
-        'message' : `App is running on port ${port} successfully.`,
+        'message': `App is running on port ${port} successfully.`,
         'data': {}
     });
 });
@@ -33,7 +33,7 @@ app.use('/api/blogs', blogsApi);
 app.all('*', function (req, res) {
     res.status(404).json({
         'success': false,
-        'message' : 'Sorry, URL not found.',
+        'message': 'Sorry, URL not found.',
         'data': {}
     });
 });
