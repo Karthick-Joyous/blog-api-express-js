@@ -1,32 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var response = require('../helpers/responseHelper.js');
+const express = require('express');
+const router = express.Router();
+const blogController = require("../controllers/blogController");
 
-router.get('/', function (req, res) {
-   var data = {};
-   return response.success(res, "Blogs - GET route.", 200, data);
-});
-
-router.post('/', function (req, res) {
-   var data = {
-      'blog': req.body
-   }
-   return response.success(res, "Blogs - POST route.", 200, data);
-});
-
-router.put('/:id', function (req, res) {
-   var data = {};
-   return response.success(res, `Blogs - PUT (${req.params.id}) route.`, 200, data);
-});
-
-router.get('/:id', function (req, res) {
-   var data = {};
-   return response.success(res, `Blogs - GET (${req.params.id}) route.`, 200, data);
-});
-
-router.delete('/:id', function (req, res) {
-   var data = {};
-   return response.success(res, `Blogs - DELETE (${req.params.id}) route.`, 200, data);
-});
+router.get('/', blogController.index);
+router.post('/', blogController.store);
+router.put('/:id', blogController.update);
+router.get('/:id', blogController.show);
+router.delete('/:id', blogController.delete);
 
 module.exports = router;
